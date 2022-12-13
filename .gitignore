@@ -1,0 +1,9 @@
+.venv*
+.vscode
+data
+
+pyc
+*.pth
+*.onnx
+__pycache__
+*.txt

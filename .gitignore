@@ -2,7 +2,7 @@
 .vscode
 data
 
-pyc
+*.pyc
 *.pth
 *.onnx
 __pycache__

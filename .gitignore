@@ -7,3 +7,4 @@ data
 *.onnx
 __pycache__
 *.txt
+u2net.egg-info/PKG-INFO

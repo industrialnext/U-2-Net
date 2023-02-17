@@ -79,7 +79,8 @@ def binarize_image(img_path):
     return binary_img
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Rename label files")
+    parser = argparse.ArgumentParser(description="Process label image files. To only binarize images, \
+            provide both -b and -l arguments. To rename and/or binarize images, provide -m, -l, -b")
     parser.add_argument("-m", action="store", help="annotations.manifest. Provide the manifest if you would like rename labels")
     parser.add_argument("-l", required=True, action="store", help="label directory")
     parser.add_argument("-b", action="store_true", help="binarize labels")

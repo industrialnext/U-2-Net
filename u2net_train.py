@@ -24,12 +24,10 @@ from data_loader import SalObjDataset
 from model import U2NET
 from model import U2NETP
 
+
 # ------- 1. define loss function --------
-
-bce_loss = nn.BCELoss(size_average=True)
-
-
 def muti_bce_loss_fusion(d0, d1, d2, d3, d4, d5, d6, labels_v):
+    bce_loss = nn.BCELoss(size_average=True)
 
     loss0 = bce_loss(d0, labels_v)
     loss1 = bce_loss(d1, labels_v)
@@ -45,21 +43,23 @@ def muti_bce_loss_fusion(d0, d1, d2, d3, d4, d5, d6, labels_v):
 
     return loss0, loss
 
+# ------- 2. set the directory of training dataset --------
+model_name = 'u2net'  # 'u2netp'
+
+data_dir = "data/"
+tra_label_dir = "label/"
+tra_image_dir = "fender5/train/"
+
+image_ext = '.jpg'
+label_ext = '.png'
+
+model_dir = os.path.join(os.getcwd(), 'saved_models', model_name + os.sep)
 
 if __name__ == '__main__':
-    # ------- 2. set the directory of training dataset --------
-    
-    model_name = 'u2net'  # 'u2netp'
-    
-    data_dir = "data/"
-    tra_label_dir = "fender5/label/"
-    tra_image_dir = "fender5/train/"
-    
-    image_ext = '.jpg'
-    label_ext = '.png'
-    
-    model_dir = os.path.join(os.getcwd(), 'saved_models', model_name + os.sep)
-    
+    if not os.path.exists(model_dir):
+        print(f"mkdir {model_dir}")
+        os.makedirs(model_dir)
+
     epoch_num = 100000
     batch_size_train = 6
     batch_size_val = 1

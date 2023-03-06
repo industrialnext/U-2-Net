@@ -62,8 +62,11 @@ if __name__ == '__main__':
         print("Paths don't exist!")
         exit()
 
-    if args.m and os.path.isabs(args.m):
-        model_dir = os.path.join(args.m, model_name + os.sep)
+    if args.m:
+        if os.path.isabs(args.m):
+            model_dir = os.path.join(args.m, model_name + os.sep)
+        else:
+            model_dir = os.path.join(os.getcwd(), args.m, model_name + os.sep)
     else:
         model_dir = os.path.join(os.getcwd(), model_name + os.sep)
 

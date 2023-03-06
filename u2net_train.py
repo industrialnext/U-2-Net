@@ -54,7 +54,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train")
     parser.add_argument("-i", required=True, action="store", help="Training image directory")
     parser.add_argument("-l", required=True, action="store", help="Training label directory")
-    parser.add_argument("-m", required=True, action="store", help="Saved model directory name")
+    parser.add_argument("-m", action="store", help="Saved model directory name")
 
     args = parser.parse_args()
 
@@ -62,10 +62,10 @@ if __name__ == '__main__':
         print("Paths don't exist!")
         exit()
 
-    if os.path.isabs(args.m):
+    if args.m and os.path.isabs(args.m):
         model_dir = os.path.join(args.m, model_name + os.sep)
     else:
-        model_dir = os.path.join(os.getcwd(), args.m, model_name + os.sep)
+        model_dir = os.path.join(os.getcwd(), model_name + os.sep)
 
     if not os.path.exists(model_dir):
         print(f"mkdir {model_dir}")

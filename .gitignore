@@ -1,6 +1,7 @@
 .venv*
 .vscode
 data
+.DS_Store
 
 *.pyc
 *.pth
